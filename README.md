@@ -1,5 +1,29 @@
 # smart-price
 
+### Task 2.Git Repository team
+
+**Objective:**
+Ensure the code repository aligns with project guidelines, enabling effective workflow collaboration and quality control.
+Positioning and Role：
+Documentation Center, Supporting role as needed
+
+### Task Assignments：
+1.Set Up Branch Structure
+Task:
+•	Create “dev”, “test”, and “master/prod” branches
+•	Responsible:
+•	Due: 
+2.Set Up Branch Workflow
+Task:
+•	Create and test the repo workflow, make sure everone understand
+•	Responsible: 
+•	Due: 
+3.Monitor Workflow and Weekly Repo Activity
+•	Daily Workflow Monitoring Weekly Repo Task Reminders（at least per comint per week）
+•	Responsible: 
+•	Due: 
+
+
 ### Task 3.Data team
 
 **Objective** Organize and conduct research on API data interfaces and data extraction, analyze and solve issues as they arise, propose and implement data engineering measures, and establish effective interaction with the model team.
