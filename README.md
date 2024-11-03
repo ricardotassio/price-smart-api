@@ -55,28 +55,44 @@ Positioning and Role：API expert, Data extraction and processing,Advise model t
 
 ### Task 4.Model team
  
-**Objective**：The Model Team Lead is responsible for overseeing the development, optimization, and implementation of predictive models that will inform eBay sellers’ sales strategies.
-Positioning and Role：Machine Learning Specialist, Communication Liaison between Data Input and Data Insights
+**Objective**：The Model Team Lead is responsible for overseeing the development, optimization, and implementation of predictive models. These models are designed to support eBay sellers in refining their sales strategies by providing actionable insights.
+Positioning and Role：
+• **Key Responsibilities**: Model development, optimization, and cross-team coordination to ensure seamless integration of insights.
 
-### Task Assignments：
-1.API Research & Setup
-1.Model Selection
-•	Task: Identify and select algorithms suitable for data characteristics and project goals.
-•	Responsible:
-•	Due:
-2.Model Training
-•	Task: Train models using processed data to achieve baseline predictions.
-•	Responsible:
-•	Due:
-3.Model Evaluation
-•	Task: Evaluate model performance through metrics like accuracy, precision, and recall.
-•	Responsible:
-•	Due:
-4.Parameter Tuning
-•	Task: Optimize model parameters to improve predictive accuracy.
-•	Responsible:
-•	Due:
-5.Cross-Team Collaboration
-•	Task: Coordinate closely with data input and insights teams for feature alignment, feedback, and insights integration.
-•	Responsible:
+### Task Assignments and Details：
+**1.API Research & Setup**
+• **Objective**: Research, identify, and set up APIs needed for sourcing relevant data from eBay and other external platforms.
+• **Tasks**:
+  • Investigate available APIs for data collection (e.g., eBay API) and evaluate their compatibility with project requirements.
+  • Configure API connections and manage authentication protocols to secure data access.
+**2.Model Selection**
+• **Objective**: Select suitable machine learning algorithms based on the dataset characteristics and project objectives.
+• **Tasks**:
+  • Review and compare various machine learning models (e.g., linear regression, decision trees, gradient boosting) for potential application.
+  • Ensure model selection aligns with the data volume, variety, and goals, such as predictive accuracy and interpretability.
+  • Document and justify selected algorithms for transparency and further tuning.
+**3.Model Training**
+• **Objective**: Train selected models using prepared data to establish baseline predictive capabilities.
+• **Tasks**:
+  • Split data into training, validation, and testing sets to ensure fair model evaluation.
+  • Train initial models to establish baseline performance, setting the foundation for further refinement.
+  • Record model outputs and preliminary results for review.
+**4.Model Evaluation**
+•	**Objective**: Assess model performance to ensure alignment with desired accuracy and robustness.
+• **Tasks**:
+  • Evaluate models using performance metrics like accuracy, precision, recall, and F1-score.
+  • Analyze error rates and identify areas of potential model improvement.
+  • Prepare evaluation reports with visualizations to clearly present findings to stakeholders.
+**5.Parameter Tuning**
+•	**Objective**: Optimize model parameters to enhance predictive accuracy and generalization.
+• **Tasks**:
+  • Use techniques like grid search or randomized search for systematic parameter tuning.
+  • Adjust hyperparameters and compare model performance to identify optimal configurations.
+  • Log parameter settings and results for reproducibility.
+**6.Cross-Team Collaboration**
+•	**Objective**:  Coordinate closely with the Data Input and Insights Teams to align on features, receive feedback, and integrate insights.
+• **Tasks**:
+  • Facilitate regular meetings to discuss progress, challenges, and data feature updates.
+  • Align model requirements with the insights team for seamless incorporation of insights into models.
+  • Provide status updates and obtain feedback from stakeholders to ensure alignment with project goals.
 •	Due:
