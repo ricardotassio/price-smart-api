@@ -64,7 +64,7 @@ Positioning and Role：API expert, Data extraction and processing,Advise model t
 **1.API Research & Setup**
 • **Objective**: Research, identify, and set up APIs needed for sourcing relevant data from eBay and other external platforms.
 • **Tasks**:
-  • Investigate available APIs for data collection (e.g., eBay API) and evaluate their compatibility with project requirements.
+  • Investigate available ebay APIs for data collection and evaluate their compatibility with project requirements.
   • Configure API connections and manage authentication protocols to secure data access.
 **2.Model Selection**
 • **Objective**: Select suitable machine learning algorithms based on the dataset characteristics and project objectives.
@@ -95,8 +95,6 @@ Positioning and Role：API expert, Data extraction and processing,Advise model t
 • **Tasks**:
   • Facilitate regular meetings to discuss progress, challenges, and data feature updates.
   • Align model requirements with the insights team for seamless incorporation of insights into models.
-  • Provide status updates and obtain feedback from stakeholders to ensure alignment with project goals.
-•	Due:
 
 #### Task 5. Insights Team
 
