@@ -24,6 +24,7 @@ Task:
 •	Due: 
 
 
+
 ### Task 3.Data team
 
 **Objective** Organize and conduct research on API data interfaces and data extraction, analyze and solve issues as they arise, propose and implement data engineering measures, and establish effective interaction with the model team.
