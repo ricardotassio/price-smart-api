@@ -96,3 +96,22 @@ Positioning and Role：
   • Align model requirements with the insights team for seamless incorporation of insights into models.
   • Provide status updates and obtain feedback from stakeholders to ensure alignment with project goals.
 •	Due:
+
+#### Task 5. Insights Team
+
+• **Objective**: Analyze model outputs and raw data to generate actionable insights for eBay sellers, providing strategic recommendations based on trends and patterns in the data.
+
+• **Roles and Responsibilities**: Data Insights Specialist, Communication Liaison between Data Processing and Model Development Teams
+
+• **Task Assignments**
+1. Data Analysis
+•   Task: Analyze processed data to identify key trends and patterns.
+2. Insight Generation
+•   Task: Extract actionable insights that can inform sellers’ pricing, inventory, and marketing strategies.
+4. Report Preparation
+•   Task: Summarize findings and recommendations in a clear, concise report for stakeholders.
+5. Visualizations
+•   Task: Create visualizations to support insights and make findings more accessible to non-technical stakeholders.
+6. Cross-Team Collaboration
+•   Task: Work closely with the data processing and model development teams to ensure insights are based on accurate data and relevant model outputs.
+
