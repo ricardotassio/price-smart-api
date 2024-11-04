@@ -57,7 +57,7 @@ Positioning and Role：API expert, Data extraction and processing,Advise model t
 ### Task 4.Model team
  
 **Objective**：The Model Team Lead is responsible for overseeing the development, optimization, and implementation of predictive models. These models are designed to support eBay sellers in refining their sales strategies by providing actionable insights.
-Positioning and Role：
+
 • **Key Responsibilities**: Model development, optimization, and cross-team coordination to ensure seamless integration of insights.
 
 ### Task Assignments and Details：
