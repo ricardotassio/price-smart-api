@@ -1,4 +1,4 @@
-# smart-price
+# PriceSmart
 
 ### Task 1.Project Board Walkthrough
 
