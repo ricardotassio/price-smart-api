@@ -89,43 +89,54 @@ Positioning and Role：API expert, Data extraction and processing,Advise model t
 
 ### Task Assignments and Details：
 **1.API Research & Setup**
-• **Objective**: Research, identify, and set up APIs needed for sourcing relevant data from eBay and other external platforms.
+**Objective**: Research, identify, and set up APIs needed for sourcing relevant data from eBay and other external platforms.
+
 • **Tasks**:
   • Investigate available ebay APIs for data collection and evaluate their compatibility with project requirements.
   • Configure API connections and manage authentication protocols to secure data access.
+
 **2.Model Selection**
-• **Objective**: Select suitable machine learning algorithms based on the dataset characteristics and project objectives.
+**Objective**: Select suitable machine learning algorithms based on the dataset characteristics and project objectives.
+
 • **Tasks**:
   • Review and compare various machine learning models (e.g., linear regression, decision trees, gradient boosting) for potential application.
   • Ensure model selection aligns with the data volume, variety, and goals, such as predictive accuracy and interpretability.
   • Document and justify selected algorithms for transparency and further tuning.
+
 **3.Model Training**
-• **Objective**: Train selected models using prepared data to establish baseline predictive capabilities.
+**Objective**: Train selected models using prepared data to establish baseline predictive capabilities.
+
 • **Tasks**:
   • Split data into training, validation, and testing sets to ensure fair model evaluation.
   • Train initial models to establish baseline performance, setting the foundation for further refinement.
   • Record model outputs and preliminary results for review.
+
 **4.Model Evaluation**
-•	**Objective**: Assess model performance to ensure alignment with desired accuracy and robustness.
+**Objective**: Assess model performance to ensure alignment with desired accuracy and robustness.
+
 • **Tasks**:
   • Evaluate models using performance metrics like accuracy, precision, recall, and F1-score.
   • Analyze error rates and identify areas of potential model improvement.
   • Prepare evaluation reports with visualizations to clearly present findings to stakeholders.
+  
 **5.Parameter Tuning**
-•	**Objective**: Optimize model parameters to enhance predictive accuracy and generalization.
+**Objective**: Optimize model parameters to enhance predictive accuracy and generalization.
+
 • **Tasks**:
   • Use techniques like grid search or randomized search for systematic parameter tuning.
   • Adjust hyperparameters and compare model performance to identify optimal configurations.
   • Log parameter settings and results for reproducibility.
+  
 **6.Cross-Team Collaboration**
-•	**Objective**:  Coordinate closely with the Data Input and Insights Teams to align on features, receive feedback, and integrate insights.
+**Objective**:  Coordinate closely with the Data Input and Insights Teams to align on features, receive feedback, and integrate insights.
+
 • **Tasks**:
   • Facilitate regular meetings to discuss progress, challenges, and data feature updates.
   • Align model requirements with the insights team for seamless incorporation of insights into models.
 
-Task 5. Insights Team
+### Task 5. Insights Team
 
-• **Objective**: Analyze model outputs and raw data to generate actionable insights for eBay sellers, providing strategic recommendations based on identified trends and patterns within the data.
+**Objective**: Analyze model outputs and raw data to generate actionable insights for eBay sellers, providing strategic recommendations based on identified trends and patterns within the data.
 
 • **Roles and Responsibilities**:Data Insights Specialist, Communication Liaison between Data Processing and Model Development Teams
 
