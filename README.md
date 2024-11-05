@@ -6,30 +6,26 @@
  To our strategic approach to task delegation, milestone tracking, and the continuous delivery of project goals. By showcasing our project management framework, we emphasize the structured workflow and proactive problem-solving that ensures successful project outcomes.
 
 ### Task Assignments:
-1. Task Mapping
-Guideline: Ensure all work done has a task it can be mapped to.
-Assigned Task: Review current project board to verify that each task correlates to a project deliverable.
-Responsible: 
+1.	Task Mapping 
+•	Guideline: Ensure all work done has a task it can be mapped to. 
+•	Assigned Task: Review current project board to verify that each task correlates to a project deliverable. 
+•	Responsible:
+2.	Task Breakdown 
+•	Guideline: Most tasks should be less than 4 hours of work. If longer, they should be broken down. 
+•	Assigned Task: Audit larger tasks and split them into smaller, actionable units. 
+•	Responsible:
+3.	Task Assignment for “In-Progress” and “Done” 
+•	Guideline: Ensure all “in-progress” and “done” tasks are assigned, and most “to-do” tasks have an assignee. 
+•	Task: Review and assign all unassigned tasks in the “In-Progress” and “Done” columns. Responsible:
+4.	Individual Task Ownership 
+•	Guideline: Assign most tasks to a single individual rather than multiple team members.
+•	Assigned Task: Re-assign tasks with multiple assignees to one responsible individual while maintaining collaboration. 
+•	Responsible:
+5.	Swimlane Organization 
+•	Guideline: Maintain at least three swimlanes: To Do, In Progress, and Done. 
+•	Assigned Task: Verify the existence of swimlanes and ensure tasks are allocated correctly. 
+•	Responsible:
 
-2. Task Breakdown
-Guideline: Most tasks should be less than 4 hours of work. If longer, they should be broken down.
-Assigned Task: Audit larger tasks and split them into smaller, actionable units.
-Responsible:
-
-3. Task Assignment for “In-Progress” and “Done”
-Guideline: Ensure all “in-progress” and “done” tasks are assigned, and most “to-do” tasks have an assignee.
-Assigned Task: Review and assign all unassigned tasks in the “In-Progress” and “Done” columns.
-Responsible:
-
-4. Individual Task Ownership
-Guideline: Assign most tasks to a single individual rather than multiple team members.
-Assigned Task: Re-assign tasks with multiple assignees to one responsible individual while maintaining collaboration.
-Responsible:
-
-5. Swimlane Organization
-Guideline: Maintain at least three swimlanes: To Do, In Progress, and Done.
-Assigned Task: Verify the existence of swimlanes and ensure tasks are allocated correctly.
-Responsible:
 
 ### Task 2.Git Repository team
 
