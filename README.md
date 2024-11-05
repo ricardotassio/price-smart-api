@@ -57,14 +57,14 @@ Positioning and Role：API expert, Data extraction and processing,Advise model t
 ### Task 4.Model team
  
 **Objective**：The Model Team Lead is responsible for overseeing the development, optimization, and implementation of predictive models. These models are designed to support eBay sellers in refining their sales strategies by providing actionable insights.
-Positioning and Role：
+
 • **Key Responsibilities**: Model development, optimization, and cross-team coordination to ensure seamless integration of insights.
 
 ### Task Assignments and Details：
 **1.API Research & Setup**
 • **Objective**: Research, identify, and set up APIs needed for sourcing relevant data from eBay and other external platforms.
 • **Tasks**:
-  • Investigate available APIs for data collection (e.g., eBay API) and evaluate their compatibility with project requirements.
+  • Investigate available ebay APIs for data collection and evaluate their compatibility with project requirements.
   • Configure API connections and manage authentication protocols to secure data access.
 **2.Model Selection**
 • **Objective**: Select suitable machine learning algorithms based on the dataset characteristics and project objectives.
@@ -95,24 +95,21 @@ Positioning and Role：
 • **Tasks**:
   • Facilitate regular meetings to discuss progress, challenges, and data feature updates.
   • Align model requirements with the insights team for seamless incorporation of insights into models.
-  • Provide status updates and obtain feedback from stakeholders to ensure alignment with project goals.
-•	Due:
 
-#### Task 5. Insights Team
+Task 5. Insights Team
 
-• **Objective**: Analyze model outputs and raw data to generate actionable insights for eBay sellers, providing strategic recommendations based on trends and patterns in the data.
+• **Objective**: Analyze model outputs and raw data to generate actionable insights for eBay sellers, providing strategic recommendations based on identified trends and patterns within the data.
 
-• **Roles and Responsibilities**: Data Insights Specialist, Communication Liaison between Data Processing and Model Development Teams
+• **Roles and Responsibilities**:Data Insights Specialist, Communication Liaison between Data Processing and Model Development Teams
 
 • **Task Assignments**
 1. Data Analysis
-•   Task: Analyze processed data to identify key trends and patterns.
+•   Task: Examine processed data to uncover significant trends and patterns.
 2. Insight Generation
-•   Task: Extract actionable insights that can inform sellers’ pricing, inventory, and marketing strategies.
+•   Task: Derive actionable insights that can guide sellers in their pricing, inventory management, and marketing strategies
 4. Report Preparation
-•   Task: Summarize findings and recommendations in a clear, concise report for stakeholders.
+•   Task: Compile findings and recommendations into a clear and concise report for stakeholders.
 5. Visualizations
-•   Task: Create visualizations to support insights and make findings more accessible to non-technical stakeholders.
+•   Task: Develop visual representations to enhance understanding of insights and present findings in a user-friendly manner for non-technical stakeholders.
 6. Cross-Team Collaboration
-•   Task: Work closely with the data processing and model development teams to ensure insights are based on accurate data and relevant model outputs.
-
+•   Task: Collaborate closely with the data processing and model development teams to ensure insights are based on precise data and pertinent model outputs.
