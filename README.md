@@ -27,6 +27,34 @@
 •	Responsible:
 
 
+### Task 1.Project Board Walkthrough
+
+**Objective:** 
+
+To our strategic approach to task delegation, milestone tracking, and the continuous delivery of project goals. By showcasing our project management framework, we emphasize the structured workflow and proactive problem-solving that ensures successful project outcomes.
+
+### Task Assignments
+
+1.	Task Mapping 
+•	Guideline: Ensure all work done has a task it can be mapped to. 
+•	Assigned Task: Review current project board to verify that each task correlates to a project deliverable. 
+•	Responsible:
+2.	Task Breakdown 
+•	Guideline: Most tasks should be less than 4 hours of work. If longer, they should be broken down. 
+•	Assigned Task: Audit larger tasks and split them into smaller, actionable units. 
+•	Responsible:
+3.	Task Assignment for “In-Progress” and “Done” 
+•	Guideline: Ensure all “in-progress” and “done” tasks are assigned, and most “to-do” tasks have an assignee. 
+•	Task: Review and assign all unassigned tasks in the “In-Progress” and “Done” columns. Responsible:
+4.	Individual Task Ownership 
+•	Guideline: Assign most tasks to a single individual rather than multiple team members.
+•	Assigned Task: Re-assign tasks with multiple assignees to one responsible individual while maintaining collaboration. 
+•	Responsible:
+5.	Swimlane Organization 
+•	Guideline: Maintain at least three swimlanes: To Do, In Progress, and Done. 
+•	Assigned Task: Verify the existence of swimlanes and ensure tasks are allocated correctly. 
+•	Responsible:
+
 ### Task 2.Git Repository team
 
 **Objective:**
@@ -51,35 +79,21 @@ Task:
 •	Due: 
 
 
-
 ### Task 3.Data team
 
-**Objective** Organize and conduct research on API data interfaces and data extraction, analyze and solve issues as they arise, propose and implement data engineering measures, and establish effective interaction with the model team.
-Positioning and Role：API expert, Data extraction and processing,Advise model team and refine data quality as needed.
-
+**Objective** Conduct thorough research on API data interfaces and data extraction techniques, identify and resolve issues as they arise, propose and implement data engineering strategies, and facilitate effective collaboration with the model team.
 ### Task Assignments：
 
 1.API Research & Setup
-• Study and configure eBay API for optimal data extraction.
-• Responsible:
-• Due:
+• Investigate and set up the eBay API to achieve optimal data extraction.
 2.Study and configure eBay API for optimal data extraction
 • Extract and clean data to ensure quality and consistency.
-• Responsible:
-• Due:
 3.Feature Engineering
-• Create and optimize features based on model team needs.
-• Responsible:
-• Due:
+• Develop and refine features based on the requirements of the model team.
 4.Data Quality Monitoring
-• Continuously monitor and improve data quality.
-• Responsible:
-• Due:
+• Implement ongoing monitoring and enhancement of data quality.
 5.Cross-Team Collaboration
-• coordinate with the model team for feedback and adjustments.
-• Responsible:
-• Due:
-
+• Work closely with the model team to gather feedback and make necessary adjustments.
 
 ### Task 4.Model team
  
