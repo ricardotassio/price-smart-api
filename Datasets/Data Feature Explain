@@ -1,0 +1,129 @@
+Althgether, we have the following 23 features so far, with categories of Item details, Seller Information,Shipping and Listing Information,Time Information,Store and Image Information,Marketplace Information
+
+
+
+******Item Details****
+
+
+
+Title: The title of the eBay listing.
+
+Useful for identifying the product at a glance. In data analysis, it can provide keywords for categorization or text analysis.
+
+Item ID: A unique identifier for each item on eBay.
+
+This is useful for tracking specific items and distinguishing between similar listings.
+
+Price: The listed price of the item.
+
+Essential for price comparisons and for setting competitive prices in a similar market.
+
+Currency: The currency in which the item is listed (e.g., USD, CAD).
+
+Important for international listings or for converting prices to a standard currency.
+
+Condition: The condition of the item (e.g., New, Used, Refurbished).
+
+Useful for filtering items by quality and for understanding price variations based on item condition.
+
+Category: The category under which the item is listed on eBay.
+
+Helps in organizing listings by product type and can be used for narrowing down analysis to specific product categories.
+
+
+
+****Seller Information****
+
+
+
+Seller: The username of the seller listing the item.
+
+This can provide insight into seller reputation or help in identifying top-performing sellers.
+
+Feedback Score: The seller’s feedback score, which represents the total positive feedback the seller has received.
+
+Often used as a measure of seller reliability, with higher scores generally indicating a more trustworthy seller.
+
+Positive Feedback %: The percentage of positive feedback the seller has received.
+
+This can indicate the seller’s quality and trustworthiness. A higher percentage implies good customer satisfaction.
+
+10. Top Rated Seller: A boolean indicator showing whether the seller has eBay’s “Top Rated” status.
+
+Useful for filtering out top-rated sellers, who often have high customer service standards.
+
+
+
+****Shipping and Listing Information****
+
+
+
+11. Shipping Type: The type of shipping offered (e.g., Free, Flat Rate, Calculated).
+
+Important for estimating additional buyer costs or understanding listing competitiveness in terms of total cost to the customer.
+
+12. Shipping Cost: The cost of shipping.
+
+Combined with price, this gives the total item cost for the buyer, which is useful for competitive analysis.
+
+13. Listing Type: The type of listing (e.g., Auction, Buy It Now).
+
+Differentiates between fixed price and auction listings, which can affect sales strategy and pricing analysis.
+
+14. Buy It Now Available: Indicates if a “Buy It Now” option is available in an auction.
+
+Useful for understanding whether the item can be purchased immediately or if bidding is required.
+
+
+
+****Time Information****
+
+
+
+15. Start Time: The date and time when the listing was created.
+
+This can be helpful to understand the age of the listing, which might indicate inventory turnover rates.
+
+16. End Time: The date and time when the listing will end.
+
+Particularly useful for auction-style listings to see how much time is left to place a bid or make a purchase.
+
+
+
+****Store and Image Information****
+
+
+
+17. Store Name: The name of the seller’s store, if they have one.
+
+Useful for grouping listings by store and for brand recognition.
+
+18. Store URL: The URL of the seller’s eBay store.
+
+Provides a direct link to the seller’s store, which may have other relevant listings.
+
+19. Gallery URL: The URL of the gallery image for the listing.
+
+Useful for displaying a thumbnail of the product or for visual inspection.
+
+20. Large Image URL: The URL of a larger version of the product image.
+
+Helps in showing more detailed product visuals.
+
+21. Super Size Image URL: The URL of the largest available image size.
+
+Provides a high-resolution image for in-depth inspection.
+
+22. View Item URL: The direct URL to view the item listing on eBay.
+
+Essential for accessing the item directly, especially if detailed inspection or purchase is needed.
+
+
+
+****Marketplace Information****
+
+
+
+23. Marketplace: The eBay marketplace where the item is listed (e.g., EBAY-US, EBAY-CA).
+
+Important for regional analysis or filtering listings by country/market.
