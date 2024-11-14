@@ -1,1 +1,4 @@
-# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+apache-airflow-providers-mongo==4.2.2
+ebaysdk==2.1.5
+pymongo>=4.5.0
+pendulum>=2.1.2

@@ -1,0 +1,3 @@
+[submodule "ebay_collect_api"]
+	path = ebay_collect_api
+	url = https://github.com/ricardotassio/ebay_collect_api.git

@@ -1,0 +1,27 @@
+Insight : Effect of Shipping Type on Price
+
+cat__Shipping Type_Free	cat__Shipping Type_Flat	cat__Shipping Type_Calculated	num__Price
+0.0	0.0	0.0	0.039940
+0.0	0.0	1.0	-0.021516
+0.0	1.0	0.0	-0.023810
+1.0	0.0	0.0	0.015324
+
+1.	Shipping Type: Free Shipping (cat__Shipping Type_Free)
+o	The first row (where cat__Shipping Type_Free = 0.0) shows that when free shipping is not applied, the average price is 0.039940.
+o	The fourth row (where cat__Shipping Type_Free = 1.0) shows that when free shipping is applied, the average price is 0.015324.
+o	This indicates that free shipping tends to result in slightly lower prices, which may reflect the fact that sellers often absorb the shipping costs by lowering the price of the product.
+2.	Shipping Type: Flat Shipping (cat__Shipping Type_Flat)
+3.	The third row (where cat__Shipping Type_Flat = 1.0) shows that flat shipping has a slightly lower average price (i.e., -0.023810). This suggests that when flat-rate shipping is used, the price tends to be lower compared to other types.
+4.	This could indicate that flat-rate shipping is preferred for certain products where the shipping cost is predictable and doesn't significantly impact the overall pricing.
+5.	Shipping Type: Calculated Shipping (cat__Shipping Type_Calculated)
+6.	The second row (where cat__Shipping Type_Calculated = 1.0) shows that calculated shipping results in a slightly more negative average price (i.e., -0.021516). Calculated shipping may involve extra cost considerations, and this pricing trend might suggest that calculated shipping could be applied to items where the seller can precisely charge based on the buyer's location.
+Key Actionable Insights from Shipping Type:
+1. Free Shipping:
+•	Insight: Items with free shipping have lower average prices, which might make them more attractive to buyers.
+•	Actionable Strategy: If you're selling products with higher profit margins, you may want to offer free shipping to attract more buyers. The lower price due to free shipping could be a competitive advantage, especially in the highly price-sensitive eBay market.
+2. Flat Shipping:
+•	Insight: Flat shipping leads to slightly lower prices compared to calculated shipping.
+•	Actionable Strategy: For products that are lightweight and easy to ship, consider flat-rate shipping. It helps you manage shipping costs more predictably, which can make your pricing more competitive without risking too much variability in shipping fees.
+3. Calculated Shipping:
+•	Insight: Calculated shipping may result in lower prices, suggesting that buyers are less willing to pay higher prices when shipping costs are uncertain.
+•	Actionable Strategy: If you're selling items that are large or bulky, calculated shipping may be a better option since you can adjust the price based on the buyer's location. However, keep in mind that buyers may prefer flat shipping or free shipping if the difference in cost is minimal.  
