@@ -12,7 +12,7 @@ st.set_page_config(page_title="Product Comparison", layout="wide")
 # Load model
 def load_model():
     try:
-        model = joblib.load(os.path.join(os.path.dirname(__file__), "..", "model.pkl")) 
+        model = joblib.load(os.path.join(os.path.dirname(__file__), "model.pkl")) 
         return model
     except Exception as e:
         st.error(f"Error loading model: {e}")
@@ -118,7 +118,7 @@ fields2 = {
 
 # Load and encode the image (adjust the path and filename as needed)
 current_dir = os.path.dirname(os.path.abspath(__file__))
-image_path = os.path.join(current_dir, "..", "price_smart.jpg")
+image_path = os.path.join(current_dir, "price_smart.jpg")
 with open(image_path, "rb") as img_file:
     image_data = base64.b64encode(img_file.read()).decode()
 
