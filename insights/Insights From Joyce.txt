@@ -1,0 +1,36 @@
+INSIGHTS FROM JOYCE ** AFTER EDA of transformed_ebay_data.csv from Bo
+
+in alignment to  : 
+
+Competitive Pricing 
+
+includes price trends (except seasonal)
+
+how fast the items are sold 
+
+average price 
+
+Price Distribution Optimization
+
+Insight: The data reveals clustering around certain price points, suggesting that sellers often gravitate toward specific pricing strategies based on item type or perceived value.
+
+Usage: Our organization can use this insight to guide sellers in positioning their prices within these common ranges, enhancing the likelihood of competitive pricing that resonates with buyer expectations.
+
+Impact: Aligning pricing with market norms can increase sales volume, foster competitiveness, and potentially reduce the time items spend on the market, driving a higher turnover rate for sellers.
+
+2. Sales Speed Improvement by Listing Type
+
+Insight: Different listing types, such as "Fixed Price" versus "Auction," have distinct impacts on sales speed. For instance, items listed as "Fixed Price" generally sell faster than those listed as "Auction."
+
+Usage: This insight allows our organization to recommend optimal listing types for sellers based on their goals. Sellers aiming for quick sales can be advised to use "Fixed Price" listings, while those seeking higher bids might still consider "Auction" types.
+
+Impact: Tailoring listing recommendations based on sales speed enhances seller satisfaction by aligning sales outcomes with their objectives, whether it’s quicker sales for cash flow or maximizing value through bids.
+
+3. Leveraging Feedback Score for Price Strategy
+
+Insight: Higher feedback scores correlate with higher average prices, suggesting that sellers with strong reputations are able to set higher prices confidently.
+
+Usage: Our Organization can leverage this insight to advise new or lower-feedback sellers to start within lower price ranges to build reputation through sales volume before gradually increasing prices. Conversely, high-feedback sellers can capitalize on their reputation by pricing items in higher ranges.
+
+Impact: Implementing this strategy can improve new sellers' market entry by fostering quicker sales at competitive prices while helping established sellers maximize revenue, ultimately enhancing the platform's overall buyer satisfaction by maintaining price-quality alignment across listings.
+
