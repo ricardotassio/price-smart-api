@@ -4,6 +4,7 @@ import xgboost as xgb
 import joblib
 from PIL import Image
 import base64
+import os
 
 # Set page config
 st.set_page_config(page_title="Product Comparison", layout="wide")
@@ -11,7 +12,7 @@ st.set_page_config(page_title="Product Comparison", layout="wide")
 # Load model
 def load_model():
     try:
-        model = joblib.load("./model.pkl")  # Ensure the path to your model is correct
+        model = joblib.load(os.path.join(os.path.dirname(__file__), "model.pkl")) 
         return model
     except Exception as e:
         st.error(f"Error loading model: {e}")
@@ -79,13 +80,11 @@ shipping_type_list = list(Shipping_Type.keys())
 Listing_Type = {'Auction': 0, 'AuctionWithBIN': 1, 'FixedPrice': 2, 'StoreInventory': 3}
 listing_type_list = list(Listing_Type.keys())
 
-# We will not use Shipping_Listing_Type_Encoded here since the model was not trained with it
-
-# Define input fields
+# Fields now have category first, followed by others
 fields = {
+    "Category": category_list,
     "Product Name": "Product 1",
     "Feedback Score (num)": 52000,
-    "Category": category_list,
     "Feedback Quality (num)": 1000,
     "Positive Feedback (%)": 98.5,
     "Price (USD)": 25.00,
@@ -98,10 +97,11 @@ fields = {
     "Has Store URL?": ["Yes", "No"],
     "Listing Type": listing_type_list
 }
+
 fields2 = {
+    "Category": category_list,
     "Product Name": "Product 2",
     "Feedback Score (num)": 1200,
-    "Category": category_list,
     "Feedback Quality (num)": 100,
     "Positive Feedback (%)": 42.5,
     "Price (USD)": 250.00,
@@ -116,7 +116,8 @@ fields2 = {
 }
 
 # Load and encode the image (adjust the path and filename as needed)
-image_path = "./price_smart.jpg"  # Ensure the image file is present
+current_dir = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(current_dir, "price_smart.jpg")
 with open(image_path, "rb") as img_file:
     image_data = base64.b64encode(img_file.read()).decode()
 
@@ -130,12 +131,9 @@ st.markdown(f"""
 
 st.markdown("<h2 style='text-align: center;'>Product Comparison</h2>", unsafe_allow_html=True)
 
-col1, col2 = st.columns(2)
+# Action selection
+action = st.selectbox("What do you want to do?", ["", "Check a product", "Compare two products"])
 
-input_data1 = {}
-input_data2 = {}
-
-# A helper mapping from display labels to original feature names
 feature_name_map = {
     "Feedback Score (num)": "Feedback Score",
     "Category": "Category_Encoded",
@@ -150,198 +148,304 @@ feature_name_map = {
     "Listing Type": "Listing Type_Encoded"
 }
 
-def process_input(fields, col, product_prefix="", keys_suffix=""):
+def process_input(fields, product_prefix="", keys_suffix=""):
+    """
+    Show Category first, then show product_prefix title, then the rest of the fields.
+    """
     input_data = {}
-    with col:
-        st.subheader(product_prefix)
-        input_data["Product Name"] = st.text_input("Product Name", value=product_prefix, key=f"Product_Name{keys_suffix}")
-        for field, default in fields.items():
+    # First handle category field
+    category_choice = st.selectbox("Category", fields["Category"], key=f"Category{keys_suffix}")
+    input_data["Category_Encoded"] = category_mapping[category_choice]
+    
+    # Now show the product header after category
+    st.subheader(product_prefix)
+
+    # Iterate over the rest of the fields except Category which we already handled
+    for field, default in fields.items():
+        if field == "Category":
+            continue
+        if isinstance(default, list):
+            user_input = st.selectbox(field, options=default, key=f"{field}{keys_suffix}")
+            # Map back to encoded values
+            if field == "Condition":
+                input_data["Condition_Encoded"] = Condition[user_input]
+            elif field == "Shipping Type":
+                input_data["Shipping Type_Encoded"] = Shipping_Type[user_input]
+            elif field == "Listing Type":
+                input_data["Listing Type_Encoded"] = Listing_Type[user_input]
+            elif field == "Trusted Seller?":
+                input_data["Is_Trusted_Seller"] = 1 if user_input == "Yes" else 0
+            elif field == "Has Store URL?":
+                input_data["Store URL_flag"] = 1 if user_input == "Yes" else 0
+        else:
+            # For Product Name or numeric fields
             if field == "Product Name":
-                continue
-            if isinstance(default, list):
-                user_input = st.selectbox(field, options=default, key=f"{field}{keys_suffix}")
-                # Map back to encoded values
-                if field == "Category":
-                    input_data["Category_Encoded"] = category_mapping[user_input]
-                elif field == "Condition":
-                    input_data["Condition_Encoded"] = Condition[user_input]
-                elif field == "Shipping Type":
-                    input_data["Shipping Type_Encoded"] = Shipping_Type[user_input]
-                elif field == "Listing Type":
-                    input_data["Listing Type_Encoded"] = Listing_Type[user_input]
-                elif field == "Trusted Seller?":
-                    input_data["Is_Trusted_Seller"] = 1 if user_input == "Yes" else 0
-                elif field == "Has Store URL?":
-                    input_data["Store URL_flag"] = 1 if user_input == "Yes" else 0
+                input_data["Product Name"] = st.text_input(field, value=default, key=f"{field}{keys_suffix}")
             else:
-                # Numeric fields
                 fname = feature_name_map.get(field, field)
                 if field not in ["Trusted Seller?", "Has Store URL?", "Category", "Condition", "Shipping Type", "Listing Type"]:
                     input_data[fname] = st.number_input(field, value=default, key=f"{field}{keys_suffix}")
+
     return input_data
 
-input_data1 = process_input(fields, col1, product_prefix="Product 1", keys_suffix="_1")
-input_data2 = process_input(fields2, col2, product_prefix="Product 2", keys_suffix="_2")
-col_left, col_center, col_right = st.columns([1,1,1])
+if action == "Check a product":
+    input_data1 = process_input(fields, product_prefix="Product 1", keys_suffix="_1")
 
-with col_center:
-    st.markdown("""
-        <style>
-        div.stButton > button {
-            display: block;
-            margin: 0 auto;
-            background-color: #1e90ff;
-            color: white;
+    # Button to check product
+    col_center = st.columns([1,1,1])[1]
+    with col_center:
+        st.markdown("""
+            <style>
+            div.stButton > button {
+                display: block;
+                margin: 0 auto;
+                background-color: #1e90ff;
+                color: white;
                 border-radius: 20px;
                 padding: 10px 20px;
                 border-color: transparent;
                 font-size: 16px;
-          
-        }
-        div.stButton > button:hover {
-            background-color: #0077b6;
-            color: white;
-            border-color: transparent;
-        }
-        div.stButton > button:a:active {
-            background-color: #0077b6;
-            color: white;
-            border-color: transparent;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-    if st.button("Compare Products"):
-        if model:
-            try:
-                required_fields = [
-                    'Feedback Score',
-                    'Category_Encoded',
-                    'Feedback_Quality',
-                    'Positive Feedback %',
-                    'Price_in_USD',
-                    'Price_Condition',
-                    'Is_Trusted_Seller',
-                    'Shipping Cost',
-                    'Cost_to_Price_Ratio',
-                    'Condition_Encoded',
-                    'Shipping Type_Encoded',
-                    'Store URL_flag',
-                    'Listing Type_Encoded'
-                ]
+            }
+            div.stButton > button:hover {
+                background-color: #0077b6;
+                color: white;
+                border-color: transparent;
+            }
+            div.stButton > button:a:active {
+                background-color: #0077b6;
+                color: white;
+                border-color: transparent;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+        if st.button("Check Product"):
+            if model:
+                try:
+                    required_fields = [
+                        'Feedback Score',
+                        'Category_Encoded',
+                        'Feedback_Quality',
+                        'Positive Feedback %',
+                        'Price_in_USD',
+                        'Price_Condition',
+                        'Is_Trusted_Seller',
+                        'Shipping Cost',
+                        'Cost_to_Price_Ratio',
+                        'Condition_Encoded',
+                        'Shipping Type_Encoded',
+                        'Store URL_flag',
+                        'Listing Type_Encoded'
+                    ]
 
-                # Fill missing keys with 0 if not provided
-                for rf in required_fields:
-                    if rf not in input_data1:
-                        input_data1[rf] = 0
-                    if rf not in input_data2:
-                        input_data2[rf] = 0
+                    for rf in required_fields:
+                        if rf not in input_data1:
+                            input_data1[rf] = 0
 
-                # Print inputs before prediction
-                # st.write("**Input data for Product 1 (raw):**", input_data1)
-                df_input1 = pd.DataFrame([input_data1])
-                df_input1_model = df_input1[required_fields]
-                # st.write("**Model input for Product 1:**")
-                # st.write(df_input1_model)
+                    df_input1 = pd.DataFrame([input_data1])
+                    df_input1_model = df_input1[required_fields]
 
-                dmatrix_input1 = xgb.DMatrix(df_input1_model)
-                prediction1 = model.predict(dmatrix_input1)
-                label1 = prediction_mapping[int(prediction1[0])]
-                cat1_name = list(category_mapping.keys())[list(category_mapping.values()).index(df_input1['Category_Encoded'][0])]
+                    dmatrix_input1 = xgb.DMatrix(df_input1_model)
+                    prediction1 = model.predict(dmatrix_input1)
+                    label1 = prediction_mapping[int(prediction1[0])]
+                    cat1_name = list(category_mapping.keys())[list(category_mapping.values()).index(df_input1['Category_Encoded'][0])]
 
-                # st.write("**Input data for Product 2 (raw):**", input_data2)
-                df_input2 = pd.DataFrame([input_data2])
-                df_input2_model = df_input2[required_fields]
-                # st.write("**Model input for Product 2:**")
-                # st.write(df_input2_model)
-
-                dmatrix_input2 = xgb.DMatrix(df_input2_model)
-                prediction2 = model.predict(dmatrix_input2)
-                label2 = prediction_mapping[int(prediction2[0])]
-                cat2_name = list(category_mapping.keys())[list(category_mapping.values()).index(df_input2['Category_Encoded'][0])]
-
-                # Determine winner
-                if int(prediction1[0]) < int(prediction2[0]):
-                    winner = df_input1['Product Name'][0]
-                    trophy1 = "🏆"
-                    trophy2 = ""
-                elif int(prediction2[0]) < int(prediction1[0]):
-                    winner = df_input2['Product Name'][0]
-                    trophy1 = ""
-                    trophy2 = "🏆"
-                else:
-                    winner = "Tie"
-                    trophy1 = trophy2 = ""
-
-                # Add centered title for results
-                st.markdown("<h2 style='text-align: center; color: #1e90ff; margin-top: 50px;'>Best Product with Shortest Time in Stock</h2>", unsafe_allow_html=True)
-
-                st.markdown("""
-                    <style>
-                    .card {
-                        background-color: #ffffff;
-                        border: 1px solid #e0e0e0;
-                        padding: 20px;
-                        border-radius: 10px;
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                        text-align: center;
-                        margin-bottom: 20px;
-                        height: 400px;
-                    }
-                    .card h2 {
-                        margin-top: 0;
-                        color: #1e90ff;
-                    }
-                    .card h3 {
-                        margin: 0;
-                        color: #555555;
-                        font-weight: normal;
-                        margin-bottom: 10px;
-                    }
-                    .card p {
-                        color: #333333;
-                    }
-                    .trophy {
-                        font-size: 1.5em;
-                    }
-                    .vs {
-                        font-size: 2em;
-                        text-align: center;
-                        margin-top: 100px;
-                        color: #777777;
-                    }
-                    </style>
+                    # Card styling
+                    st.markdown("<h2 style='text-align: center; color: #1e90ff; margin-top: 50px;'>Product Time in Stock Prediction</h2>", unsafe_allow_html=True)
+                    st.markdown("""
+                        <style>
+                        .card {
+                            background-color: #ffffff;
+                            border: 1px solid #e0e0e0;
+                            padding: 20px;
+                            border-radius: 10px;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            text-align: center;
+                            margin: 0 auto;
+                            width: 50%;
+                            margin-bottom: 20px;
+                        }
+                        .card h2 {
+                            margin-top: 0;
+                            color: #1e90ff;
+                        }
+                        .card h3 {
+                            margin: 0;
+                            color: #555555;
+                            font-weight: normal;
+                            margin-bottom: 10px;
+                        }
+                        .card p {
+                            color: #333333;
+                        }
+                        </style>
                     """, unsafe_allow_html=True)
 
-                result_col1, vs_col, result_col2 = st.columns([1, 0.1, 1])
-
-                with result_col1:
                     st.markdown(f"""
                         <div class="card">
-                            <h2>{df_input1['Product Name'][0]} <span class="trophy">{trophy1}</span></h2>
+                            <h2>{df_input1['Product Name'][0]}</h2>
                             <h3>{cat1_name}</h3>
                             <p><strong>Prediction:</strong> {label1}</p>
                         </div>
-                        """, unsafe_allow_html=True)
+                    """, unsafe_allow_html=True)
 
-                with vs_col:
-                    st.markdown("<div class='vs'>vs</div>", unsafe_allow_html=True)
+                except Exception as e:
+                    st.error(f"Error during prediction: {e}")
+            else:
+                st.error("Model is not loaded. Please verify the model file.")
 
-                with result_col2:
-                    st.markdown(f"""
-                        <div class="card">
-                            <h2>{df_input2['Product Name'][0]} <span class="trophy">{trophy2}</span></h2>
-                            <h3>{cat2_name}</h3>
-                            <p><strong>Prediction:</strong> {label2}</p>
-                        </div>
-                        """, unsafe_allow_html=True)
+elif action == "Compare two products":
+    col1, col2 = st.columns(2)
+    with col1:
+        input_data1 = process_input(fields, product_prefix="Product 1", keys_suffix="_1")
+    with col2:
+        input_data2 = process_input(fields2, product_prefix="Product 2", keys_suffix="_2")
 
-                if winner != "Tie":
-                    st.success(f"**{winner}** is the better choice!")
-                else:
-                    st.info("It's a tie between the two products.")
+    col_left, col_center, col_right = st.columns([1,1,1])
 
-            except Exception as e:
-                st.error(f"Error during prediction: {e}")
-        else:
-            st.error("Model is not loaded. Please verify the model file.")
-    
+    with col_center:
+        st.markdown("""
+            <style>
+            div.stButton > button {
+                display: block;
+                margin: 0 auto;
+                background-color: #1e90ff;
+                color: white;
+                border-radius: 20px;
+                padding: 10px 20px;
+                border-color: transparent;
+                font-size: 16px;
+            }
+            div.stButton > button:hover {
+                background-color: #0077b6;
+                color: white;
+                border-color: transparent;
+            }
+            div.stButton > button:a:active {
+                background-color: #0077b6;
+                color: white;
+                border-color: transparent;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+        if st.button("Compare Products"):
+            if model:
+                try:
+                    required_fields = [
+                        'Feedback Score',
+                        'Category_Encoded',
+                        'Feedback_Quality',
+                        'Positive Feedback %',
+                        'Price_in_USD',
+                        'Price_Condition',
+                        'Is_Trusted_Seller',
+                        'Shipping Cost',
+                        'Cost_to_Price_Ratio',
+                        'Condition_Encoded',
+                        'Shipping Type_Encoded',
+                        'Store URL_flag',
+                        'Listing Type_Encoded'
+                    ]
+
+                    for rf in required_fields:
+                        if rf not in input_data1:
+                            input_data1[rf] = 0
+                        if rf not in input_data2:
+                            input_data2[rf] = 0
+
+                    df_input1 = pd.DataFrame([input_data1])
+                    df_input1_model = df_input1[required_fields]
+                    dmatrix_input1 = xgb.DMatrix(df_input1_model)
+                    prediction1 = model.predict(dmatrix_input1)
+                    label1 = prediction_mapping[int(prediction1[0])]
+                    cat1_name = list(category_mapping.keys())[list(category_mapping.values()).index(df_input1['Category_Encoded'][0])]
+
+                    df_input2 = pd.DataFrame([input_data2])
+                    df_input2_model = df_input2[required_fields]
+                    dmatrix_input2 = xgb.DMatrix(df_input2_model)
+                    prediction2 = model.predict(dmatrix_input2)
+                    label2 = prediction_mapping[int(prediction2[0])]
+                    cat2_name = list(category_mapping.keys())[list(category_mapping.values()).index(df_input2['Category_Encoded'][0])]
+
+                    # Determine winner
+                    if int(prediction1[0]) < int(prediction2[0]):
+                        winner = df_input1['Product Name'][0]
+                        trophy1 = "🏆"
+                        trophy2 = ""
+                    elif int(prediction2[0]) < int(prediction1[0]):
+                        winner = df_input2['Product Name'][0]
+                        trophy1 = ""
+                        trophy2 = "🏆"
+                    else:
+                        winner = "Tie"
+                        trophy1 = trophy2 = ""
+
+                    st.markdown("<h2 style='text-align: center; color: #1e90ff; margin-top: 50px;'>Best Product with Shortest Time in Stock</h2>", unsafe_allow_html=True)
+                    st.markdown("""
+                        <style>
+                        .card {
+                            background-color: #ffffff;
+                            border: 1px solid #e0e0e0;
+                            padding: 20px;
+                            border-radius: 10px;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            text-align: center;
+                            margin-bottom: 20px;
+                            height: 400px;
+                        }
+                        .card h2 {
+                            margin-top: 0;
+                            color: #1e90ff;
+                        }
+                        .card h3 {
+                            margin: 0;
+                            color: #555555;
+                            font-weight: normal;
+                            margin-bottom: 10px;
+                        }
+                        .card p {
+                            color: #333333;
+                        }
+                        .trophy {
+                            font-size: 1.5em;
+                        }
+                        .vs {
+                            font-size: 2em;
+                            text-align: center;
+                            margin-top: 100px;
+                            color: #777777;
+                        }
+                        </style>
+                    """, unsafe_allow_html=True)
+
+                    result_col1, vs_col, result_col2 = st.columns([1, 0.1, 1])
+
+                    with result_col1:
+                        st.markdown(f"""
+                            <div class="card">
+                                <h2>{df_input1['Product Name'][0]} <span class="trophy">{trophy1}</span></h2>
+                                <h3>{cat1_name}</h3>
+                                <p><strong>Prediction:</strong> {label1}</p>
+                            </div>
+                            """, unsafe_allow_html=True)
+
+                    with vs_col:
+                        st.markdown("<div class='vs'>vs</div>", unsafe_allow_html=True)
+
+                    with result_col2:
+                        st.markdown(f"""
+                            <div class="card">
+                                <h2>{df_input2['Product Name'][0]} <span class="trophy">{trophy2}</span></h2>
+                                <h3>{cat2_name}</h3>
+                                <p><strong>Prediction:</strong> {label2}</p>
+                            </div>
+                            """, unsafe_allow_html=True)
+
+                    if winner != "Tie":
+                        st.success(f"**{winner}** is the better choice!")
+                    else:
+                        st.info("It's a tie between the two products.")
+
+                except Exception as e:
+                    st.error(f"Error during prediction: {e}")
+            else:
+                st.error("Model is not loaded. Please verify the model file.")
