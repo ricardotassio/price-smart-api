@@ -4,6 +4,7 @@ import xgboost as xgb
 import joblib
 from PIL import Image
 import base64
+import os
 
 # Set page config
 st.set_page_config(page_title="Product Comparison", layout="wide")
@@ -11,7 +12,7 @@ st.set_page_config(page_title="Product Comparison", layout="wide")
 # Load model
 def load_model():
     try:
-        model = joblib.load("./model.pkl")  # Ensure the path to your model is correct
+        model = joblib.load(os.path.join(os.path.dirname(__file__), "..", "model.pkl")) 
         return model
     except Exception as e:
         st.error(f"Error loading model: {e}")
@@ -116,7 +117,8 @@ fields2 = {
 }
 
 # Load and encode the image (adjust the path and filename as needed)
-image_path = "./price_smart.jpg"  # Ensure the image file is present
+current_dir = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(current_dir, "..", "price_smart.jpg")
 with open(image_path, "rb") as img_file:
     image_data = base64.b64encode(img_file.read()).decode()
 
